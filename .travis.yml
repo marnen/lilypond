@@ -10,3 +10,4 @@ before_install:
   - source ./macports-ci install
 script:
   - sudo port install ${TARGET}
+  - port contents ${TARGET}
