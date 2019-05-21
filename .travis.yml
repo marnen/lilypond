@@ -1,0 +1,9 @@
+os: osx
+osx_image: xcode7.3
+
+before_install:
+  - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
+  - source ./macports-ci install
+script:
+  - port install lilypond
+  - port install lilypond-devel
