@@ -7,7 +7,7 @@ env:
 
 before_install:
   - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
-  - source ./macports-ci install
+  - source ./macports-ci install --prefix=/opt/${TARGET}
 script:
   - sudo port install ${TARGET}
   - port contents ${TARGET}
