@@ -6,9 +6,11 @@ env:
   - TARGET=lilypond-devel
 
 before_install:
+  - export MACPORTS_PREFIX=/opt/${TARGET}
   - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
-  - source ./macports-ci install --prefix=/opt/${TARGET}
+  - source ./macports-ci install --prefix=${MACPORTS_PREFIX}
 script:
   - sudo port mdmg ${TARGET}
+  - file ${MACPORTS_PREFIX}/bin/lilypond
   - echo "Work directory for ${TARGET} is $(port work ${TARGET})"
   - port contents ${TARGET}
