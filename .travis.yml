@@ -9,5 +9,6 @@ before_install:
   - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
   - source ./macports-ci install --prefix=/opt/${TARGET}
 script:
-  - sudo port install ${TARGET}
+  - sudo port mdmg ${TARGET}
+  - echo "Work directory for ${TARGET} is $(port work ${TARGET})"
   - port contents ${TARGET}
