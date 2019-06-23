@@ -1,23 +1,19 @@
 osx_instance:
   image: high-sierra-xcode-9.4.1
 
-env_task:
-  env:
+install_macports_task:
+  env: &env_targets
     matrix:
       - TARGET: lilypond
       - TARGET: lilypond-devel
-
-install_macports_task:
-  depends_on: env
   script:
     - export MACPORTS_PREFIX=/opt/${TARGET}
     - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
     - source ./macports-ci install --prefix=${MACPORTS_PREFIX}
 
 build_mdmg_task:
-  depends_on:
-    - env
-    - install_macports
+  env: *env_targets
+  depends_on: install_macports
   script: sudo port mdmg ${TARGET}
   always:
     after_build_script:
