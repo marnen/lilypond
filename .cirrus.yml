@@ -2,6 +2,7 @@ osx_instance:
   image: high-sierra-xcode-9.4.1
 
 task:
+  timeout_in: 90m
   env: &env_targets
     matrix:
       - TARGET: lilypond
