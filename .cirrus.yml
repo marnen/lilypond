@@ -6,13 +6,12 @@ task:
     matrix:
       - TARGET: lilypond
       - TARGET: lilypond-devel
-  install_macports_script:
+  script:
     - export MACPORTS_PREFIX=/opt/${TARGET}
     - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
     - source ./macports-ci install --prefix=${MACPORTS_PREFIX}
-  build_mdmg_script: sudo port mdmg ${TARGET}
-  always:
-    after_build_script:
-      - file ${MACPORTS_PREFIX}/bin/lilypond
-      - echo "Work directory for ${TARGET} is $(port work ${TARGET})"
-      - port contents ${TARGET}
+    - sudo port mdmg ${TARGET}
+    - echo "******** Built target '${TARGET}' ********"
+    - file ${MACPORTS_PREFIX}/bin/lilypond
+    - echo "Work directory for ${TARGET} is $(port work ${TARGET})"
+    - port contents ${TARGET}
