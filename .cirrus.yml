@@ -20,7 +20,7 @@ build_mdmg_task:
     - install_macports
   script: sudo port mdmg ${TARGET}
   always:
-    script:
+    after_build_script:
       - file ${MACPORTS_PREFIX}/bin/lilypond
       - echo "Work directory for ${TARGET} is $(port work ${TARGET})"
       - port contents ${TARGET}
