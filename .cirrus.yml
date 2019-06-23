@@ -1,5 +1,5 @@
-os: osx
-osx_image: xcode7.3
+osx_instance:
+  image: high-sierra-xcode-9.4.1
 
 env:
   - TARGET=lilypond
