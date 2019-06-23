@@ -2,8 +2,9 @@ osx_instance:
   image: high-sierra-xcode-9.4.1
 
 env:
-  - TARGET=lilypond
-  - TARGET=lilypond-devel
+  matrix:
+    - TARGET: lilypond
+    - TARGET: lilypond-devel
 
 install_macports_task:
   script:
